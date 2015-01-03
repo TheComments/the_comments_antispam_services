@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
 
 
   spec.add_dependency 'the_comments_base'
-  spec.add_dependency 'active_job',        '~> 4.2.0'
+  spec.add_dependency 'activejob',         '~> 4.2.0'
   spec.add_dependency 'the_viking',        '~> 1.0.0'
   spec.add_dependency 'yandex_cleanweb',   '~> 0.0.6'
 

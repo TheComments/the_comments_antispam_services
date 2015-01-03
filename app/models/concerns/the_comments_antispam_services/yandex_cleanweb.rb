@@ -1,10 +1,10 @@
-module TheComments
+module TheCommentsAntispamServices
   module YandexCleanweb
     private
 
     def cleanweb_antispam_check request_data
       comment = self
-      ycw_key = ::TheComments.config.yandex_cleanweb_api_key
+      ycw_key = ::TheCommentsBase.config.yandex_cleanweb_api_key
 
       if ycw_key.present?
         data = cleanweb_html_data(comment, request_data)

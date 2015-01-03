@@ -1,10 +1,10 @@
-module TheComments
-  module AntiSpam
+module TheCommentsAntispamServices
+  module Base
     extend ActiveSupport::Concern
 
     included do
-      include ::TheComments::Akismet
-      include ::TheComments::YandexCleanweb
+      include ::TheCommentsAntispamServices::Akismet
+      include ::TheCommentsAntispamServices::YandexCleanweb
     end
 
     def antispam_services_check request
@@ -16,7 +16,7 @@ module TheComments
         user_agent: request.try(:user_agent)
       }.compact
 
-      if ::TheComments.config.async_processing
+      if ::TheCommentsBase.config.async_processing
         TheCommentsAntiSpamJob.perform_later(comment.id, request_data)
       else
         antispam_services_check_batch(request_data)

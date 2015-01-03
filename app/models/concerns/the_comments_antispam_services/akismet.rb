@@ -1,11 +1,11 @@
-module TheComments
+module TheCommentsAntispamServices
   module Akismet
     private
 
     def akismet_antispam_check request_data
       comment   = self
-      aksm_key  = ::TheComments.config.akismet_api_key
-      aksm_blog = ::TheComments.config.akismet_blog
+      aksm_key  = ::TheCommentsBase.config.akismet_api_key
+      aksm_blog = ::TheCommentsBase.config.akismet_blog
 
       if aksm_key.present? && aksm_blog.present?
         data = akismet_html_data(comment, request_data)
