@@ -1,5 +1,6 @@
 class TheCommentsAntispamServicesGenerator < Rails::Generators::NamedBase
-  source_root File.expand_path('../templates', __FILE__)
+  source_root TheCommentsAntispamServices::Engine.root
+  # source_root File.expand_path('../templates', __FILE__)
   # argument :xname, type: :string, default: :xname
 
   # > rails g the_comments_antispam_services OPTION_NAME
@@ -23,17 +24,17 @@ class TheCommentsAntispamServicesGenerator < Rails::Generators::NamedBase
 
   private
 
-  def root_path; TheCommentsAntispamServices::Engine.root; end
+  # def root_path; TheCommentsAntispamServices::Engine.root; end
 
   def gen_name
     name.to_s.downcase
   end
 
   def cp_models
-    directory "#{ root_path }/app/models/", "app/models/"
+    directory "app/models/", "app/models"
   end
 
   def cp_jobs
-    directory "#{ root_path }/app/jobs/", "app/jobs/"
+    directory "app/jobs", "app/jobs"
   end
 end

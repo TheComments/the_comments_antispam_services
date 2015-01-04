@@ -1,4 +1,4 @@
-class TheCommentsAntiSpamJob < ActiveJob::Base
+class TheCommentsAntispamJob < ActiveJob::Base
   queue_as :the_comments_jobs
 
   # TheCommentsAntiSpamJob.perform_later(comment_id, { ... })
