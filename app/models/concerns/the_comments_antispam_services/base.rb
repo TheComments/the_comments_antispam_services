@@ -8,6 +8,10 @@ module TheCommentsAntispamServices
     end
 
     def antispam_services_check request
+      logger.debug { "*" * 50 }
+      logger.debug { "TheComments::Antispam::Check" }
+      logger.debug { "*" * 50 }
+
       comment = self
 
       request_data = {
