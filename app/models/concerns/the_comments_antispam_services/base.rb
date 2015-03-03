@@ -21,7 +21,7 @@ module TheCommentsAntispamServices
       }.compact
 
       if ::TheCommentsBase.config.async_processing
-        TheCommentsAntispamJob.perform_later(comment.id, request_data)
+        ::TheCommentsAntispamJob.perform_later(comment.id, request_data)
       else
         antispam_services_check_batch(request_data)
       end

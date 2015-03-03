@@ -36,6 +36,10 @@ module TheCommentsAntispamServices
       if result[:spam]
         comment.update_columns(akismet_state: :spam)
       end
+
+      logger.debug { "*" * 50 }
+      logger.debug { "AKISMED said: #{ result[:spam] }" }
+      logger.debug { "*" * 50 }
     end
   end
 end

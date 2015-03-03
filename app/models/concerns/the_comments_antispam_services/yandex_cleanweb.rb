@@ -28,14 +28,20 @@ module TheCommentsAntispamServices
 
     def cleanweb_check comment, ycw_key, data
       ::YandexCleanweb.api_key = ycw_key
+      ya_id = :no_id
 
       if result = ::YandexCleanweb.spam?(data)
         ya_id = result.try(:[], :id)
+
         comment.update_columns(
           yandex_cleanweb_id: ya_id,
           yandex_cleanweb_state: :spam
         )
       end
+
+      logger.debug { "*" * 50 }
+      logger.debug { "YANDEX CLEAN WEB said: #{ ya_id }" }
+      logger.debug { "*" * 50 }
     end
   end
 end
